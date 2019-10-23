@@ -16,13 +16,13 @@ class MyHandler(FileSystemEventHandler):
         actual_date = datetime.now().strftime("%d.%m.%y_%Hh%Mm%Ss")
         print(actual_date)
 
-        new_name = "new_file_" + str(self.i) + actual_date + ".txt"
-        filename = "test.txt"
+        new_name = filename + str(self.i) + "_" + actual_date + ".txt"
+        #filename = "test.txt"
         for filename in os.listdir(source_folder):
             file_exists = os.path.isfile(destination_folder + "/" + new_name)
             while file_exists:
                 self.i += 1
-                new_name = "new_file_" + str(self.i) + actual_date + ".txt"
+                new_name = filename + str(self.i) + "_" + actual_date + ".txt"
                 file_exists = os.path.isfile(destination_folder + "/" + new_name)
 
             src = source_folder + "/" + filename
