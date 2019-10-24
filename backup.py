@@ -30,7 +30,7 @@ class MyHandler(FileSystemEventHandler):
             src = source_folder + filename
             dest = destination_folder + new_name
             #os.rename(src, dest)
-            shutil.copystat(src, dest)
+            shutil.copy(src, dest)
 
 source_folder = "c:/Users/JF/Desktop/Source/"
 destination_folder = "c:/Users/JF/Desktop/Destination/"
