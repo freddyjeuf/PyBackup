@@ -9,8 +9,7 @@ from datetime import datetime
 import shutil
 
 class MyHandler(FileSystemEventHandler):
-    i = 1
-    
+    #i = 1
     #filename = "test.txt"
 
     def on_modified(self, event):
@@ -30,7 +29,8 @@ class MyHandler(FileSystemEventHandler):
 
             src = source_folder + filename
             dest = destination_folder + new_name
-            os.rename(src, dest)
+            #os.rename(src, dest)
+            shutil.copystat(src, dest)
 
 source_folder = "c:/Users/JF/Desktop/Source/"
 destination_folder = "c:/Users/JF/Desktop/Destination/"
