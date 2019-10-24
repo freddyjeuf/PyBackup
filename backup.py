@@ -16,21 +16,23 @@ class MyHandler(FileSystemEventHandler):
         actual_date = datetime.now().strftime("%d.%m.%y_%Hh%Mm%Ss")
         print(actual_date)
 
-        new_name = filename + str(self.i) + "_" + actual_date + ".txt"
+        
         #filename = "test.txt"
         for filename in os.listdir(source_folder):
-            file_exists = os.path.isfile(destination_folder + "/" + new_name)
-            while file_exists:
-                self.i += 1
-                new_name = filename + str(self.i) + "_" + actual_date + ".txt"
-                file_exists = os.path.isfile(destination_folder + "/" + new_name)
+            filename = "test.txt"
+            new_name = new_name = actual_date + "_" + filename
+            #file_exists = os.path.isfile(destination_folder + new_name)
+            #while file_exists:
+                #self.i += 1
+                #new_name = actual_date + "_" + filename
+                #file_exists = os.path.isfile(destination_folder + new_name)
 
-            src = source_folder + "/" + filename
-            dest = destination_folder + "/" + new_name
+            src = source_folder + filename
+            dest = destination_folder + new_name
             os.rename(src, dest)
 
-source_folder = "c:/Users/JF/Desktop/Source"
-destination_folder = "c:/Users/JF/Desktop/Destination"
+source_folder = "c:/Users/JF/Desktop/Source/"
+destination_folder = "c:/Users/JF/Desktop/Destination/"
 event_handler = MyHandler()
 observer = Observer()
 observer.schedule(event_handler, source_folder, recursive=True)
